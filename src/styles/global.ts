@@ -2,8 +2,9 @@ import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
     :root {
-        --backgroud: #f0f3f5;
+        --backgroud: #f0f3f7;
         --red :#E52E4D;
+        --green: #33CC95;
         --blue: #5429CC;
 
         --blue-light: #6933FF;
@@ -35,7 +36,7 @@ export const GlobalStyle = createGlobalStyle`
     // rem - 1rem = fontsize
 
     body {
-        background: var(---backgroud);
+        background: var(--backgroud);
         -webkit-font-smoothing: antialiased;
     }
 
