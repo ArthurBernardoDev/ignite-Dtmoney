@@ -2,7 +2,8 @@ import Modal from 'react-modal'
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
 import closeImg from '../../assets/close.svg'
-import { Container, TransactionTypeContainer } from './styles';
+import { Container, TransactionTypeContainer, RadioBox } from './styles';
+import { useState } from 'react';
 
 interface newTransactionModalProps {
     isOpen: boolean;
@@ -10,6 +11,9 @@ interface newTransactionModalProps {
 }
 
 export function NewTransactionModal({ isOpen, onRequestClose }: newTransactionModalProps) {
+    const [type, setType] = useState('deposit');
+
+
     return (
         <Modal isOpen={isOpen}
             onRequestClose={onRequestClose}
@@ -33,18 +37,22 @@ export function NewTransactionModal({ isOpen, onRequestClose }: newTransactionMo
                     placeholder="Valor"
                 />
                 <TransactionTypeContainer>
-                    <button
+                    <RadioBox
                         type="button"
+                        isActive={type === 'deposit'}
+                        onClick={() => { setType('deposit'); }}
                     >
                         <img src={incomeImg} alt="Entrada" />
                         <span>Entrada</span>
-                    </button>
-                    <button
+                    </RadioBox>
+                    <RadioBox
                         type="button"
+                        isActive={type === 'withdraw'}
+                        onClick={() => { setType('withdraw'); }}
                     >
                         <img src={outcomeImg} alt="Saida" />
                         <span>saida</span>
-                    </button>
+                    </RadioBox>
                 </TransactionTypeContainer>
                 <input
                     placeholder="Categoria"
@@ -56,4 +64,8 @@ export function NewTransactionModal({ isOpen, onRequestClose }: newTransactionMo
 
         </Modal>
     );
+}
+
+function usestate(): [any, any] {
+    throw new Error('Function not implemented.');
 }
