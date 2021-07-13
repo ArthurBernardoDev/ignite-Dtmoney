@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { darken } from 'polished'
 
 export const Container = styled.form`
 h2 {
@@ -45,4 +46,42 @@ button[type="submit"] {
         filter: brightness(0.9);
     }
 }
+`;
+
+export const TransactionTypeContainer = styled.div`
+
+    margin: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+
+    button {
+        height: 4rem;
+        border: 1px solid #d7d7d7;
+        border-radius: .25rem;
+        
+        background: transparent;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        transition: border-color 0.2s;
+
+        &:hover {
+            border-color: ${darken(0.1, '#d7d7d7')};
+        }
+
+        img {
+            height: 28px;
+            width: 28px;
+        }
+
+        span {
+            display: inline-block;
+            margin-left: 1rem;
+            font-size: 1rem;
+            color: var(--text-title);
+        }
+    }
 `;
