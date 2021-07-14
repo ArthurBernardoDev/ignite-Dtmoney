@@ -4,7 +4,6 @@ import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
 import closeImg from '../../assets/close.svg'
 import { Container, TransactionTypeContainer, RadioBox } from './styles';
-import { api } from '../../services/api';
 import { TransactionsContext } from '../../TransactionsContext';
 
 interface newTransactionModalProps {
@@ -20,15 +19,23 @@ export function NewTransactionModal({ isOpen, onRequestClose }: newTransactionMo
     const [category, setCategory] = useState('');
     const [type, setType] = useState('deposit');
 
-    function handleCreateNewTransaction(event: FormEvent) {
+    async function handleCreateNewTransaction(event: FormEvent) {
         event.preventDefault();
 
-        createTransaction({
+        await createTransaction({
             title,
             amount,
             category,
             type,
         })
+
+        setTitle('');
+        setAmount(0);
+        setCategory('');
+        setType('deposit');
+        onRequestClose();
+
+        onRequestClose();
 
     }
 
@@ -98,8 +105,4 @@ export function NewTransactionModal({ isOpen, onRequestClose }: newTransactionMo
 
         </Modal>
     );
-}
-
-function usestate(): [any, any] {
-    throw new Error('Function not implemented.');
 }

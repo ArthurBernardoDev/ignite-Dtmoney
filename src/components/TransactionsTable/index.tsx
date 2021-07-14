@@ -1,6 +1,4 @@
-import { transitions } from "polished";
 import { useContext } from "react";
-import { api } from "../../services/api";
 import { TransactionsContext } from "../../TransactionsContext";
 import { Container } from "./styles";
 
